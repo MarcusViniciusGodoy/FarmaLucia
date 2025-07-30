@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt"
-      xmlns:th="http://thymeleaf.org"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{template.html}">
 <head>
@@ -8,24 +8,25 @@
 </head>
 
 <body>
-    <div layout:fragment="conteudo">
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 class="hero-logo">
-                        <img src="../static/assets/logo.png" alt="Médico com máscara" th:src="@{/assets/logo.png}"> Voll
-                    </h1>
+<div layout:fragment="conteudo">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-logo">
+                    <!-- Use apenas th:src, sem src relativo -->
+                    <img th:src="@{/assets/logo.png}" alt="Médico com máscara"> Voll
+                </h1>
 
-                    <h2 class="hero-title">Encontre profissionais de <span>diversas especialidades</span></h2>
-                    <p class="hero-subtitle">e agende sua consulta com facilidade</p>
-                </div>
-
-                <div class="hero-image">
-                    <img src="../static/assets/medico.png" alt="Médico com máscara" th:src="@{/assets/medico.png}">
-                    <img src="../static/assets/medica.png" alt="Médica com estetoscópio" th:src="@{/assets/medica.png}">
-                </div>
+                <h2 class="hero-title">Encontre profissionais de <span>diversas especialidades</span></h2>
+                <p class="hero-subtitle">e agende sua consulta com facilidade</p>
             </div>
-        </section>
-    </div>
+
+            <div class="hero-image">
+                <img th:src="@{/assets/medico.png}" alt="Médico com máscara">
+                <img th:src="@{/assets/medica.png}" alt="Médica com estetoscópio">
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>

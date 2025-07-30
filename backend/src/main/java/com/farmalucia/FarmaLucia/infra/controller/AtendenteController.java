@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/atendente")
+@RequestMapping("atendente")
 public class AtendenteController {
 
     private static final String PAGINA_LISTAGEM = "atendente/listagem-atendentes";
@@ -23,7 +23,7 @@ public class AtendenteController {
         this.service = service;
     }
 
-    @GetMapping("/formulario")
+    @GetMapping("formulario")
     public String carregarPaginaCadastro(Long id, Model model){
         if(id != null){
             model.addAttribute("dados", service.carregarPorId(id));
