@@ -13,7 +13,7 @@ public class TratadorExceptions {
         return "erro/404";
     }
 
-    @ExceptionHandler(NoSuchElementException.class)
+    @ExceptionHandler(Exception.class)
     public String trataErro500(){
         return "erro/500";
     }

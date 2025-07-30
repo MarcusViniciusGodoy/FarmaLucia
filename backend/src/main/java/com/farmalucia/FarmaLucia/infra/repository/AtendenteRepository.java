@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface AtendenteRepository extends JpaRepository<Atendente, Long> {
 
-    @Query("""
+   @Query("""
             SELECT
                 CASE WHEN COUNT(a) > 0 THEN TRUE ELSE FALSE END
             FROM
