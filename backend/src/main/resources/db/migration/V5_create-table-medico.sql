@@ -1,6 +1,8 @@
-CREATE TABLE usuario (
+CREATE TABLE medico (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL
+    crm VARCHAR(6) NOT NULL UNIQUE,
+    especialidade VARCHAR(100) NOT NULL
 );

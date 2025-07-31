@@ -2,7 +2,7 @@ package com.farmalucia.FarmaLucia.infra.controller;
 
 import com.farmalucia.FarmaLucia.infra.RegraDeNegocioException;
 import com.farmalucia.FarmaLucia.infra.service.AtendenteService;
-import com.farmalucia.FarmaLucia.infra.service.DadosCadastroAtendente;
+import com.farmalucia.FarmaLucia.infra.DTO.DadosCadastroAtendenteDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,13 +28,13 @@ public class AtendenteController {
         if(id != null){
             model.addAttribute("dados", service.carregarPorId(id));
         } else {
-            model.addAttribute("dados", new DadosCadastroAtendente(null,"","","", null, null));
+            model.addAttribute("dados", new DadosCadastroAtendenteDTO(null,"","","", null, null));
         }
         return PAGINA_CADASTRO;
     }
 
     @PostMapping
-    public String cadastrarAtendente(@Valid @ModelAttribute("dados") DadosCadastroAtendente dados, BindingResult result, Model model){
+    public String cadastrarAtendente(@Valid @ModelAttribute("dados") DadosCadastroAtendenteDTO dados, BindingResult result, Model model){
         if(result.hasErrors()){
             model.addAttribute("dados", dados);
             return PAGINA_CADASTRO;

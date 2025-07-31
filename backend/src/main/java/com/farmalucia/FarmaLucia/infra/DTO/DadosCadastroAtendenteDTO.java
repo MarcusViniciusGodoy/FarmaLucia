@@ -1,4 +1,4 @@
-package com.farmalucia.FarmaLucia.infra.service;
+package com.farmalucia.FarmaLucia.infra.DTO;
 
 import com.farmalucia.FarmaLucia.infra.entity.Endereco;
 import com.farmalucia.FarmaLucia.infra.entity.Telefone;
@@ -7,14 +7,14 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
-public record DadosCadastroAtendente(Long id,
-                                     @NotBlank
+public record DadosCadastroAtendenteDTO(Long id,
+                                        @NotBlank
                                      String nome,
-                                     @NotBlank
+                                        @NotBlank
                                      @Email
                                      String email,
-                                     @NotBlank
+                                        @NotBlank
                                      String senha,
-                                     List<Endereco> enderecos,
-                                     List<Telefone> telefones) {
+                                        List<Endereco> enderecos,
+                                        List<Telefone> telefones) {
 }

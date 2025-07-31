@@ -1,5 +1,6 @@
 package com.farmalucia.FarmaLucia.infra.service;
 
+import com.farmalucia.FarmaLucia.infra.DTO.DadosCadastroAtendenteDTO;
 import com.farmalucia.FarmaLucia.infra.RegraDeNegocioException;
 import com.farmalucia.FarmaLucia.infra.entity.Atendente;
 import com.farmalucia.FarmaLucia.infra.repository.AtendenteRepository;
@@ -16,7 +17,7 @@ public class AtendenteService {
     }
 
     @Transactional
-    public void cadastrar (DadosCadastroAtendente dados){
+    public void cadastrar (DadosCadastroAtendenteDTO dados){
         if(repository.isJaCadastrado(dados.email(), dados.id())){
             throw new RegraDeNegocioException("Email já cadastrado para esse atendente");
         }
@@ -29,9 +30,9 @@ public class AtendenteService {
         }
     }
 
-    public DadosCadastroAtendente carregarPorId(Long id){
+    public DadosCadastroAtendenteDTO carregarPorId(Long id){
         var atendente = repository.findById(id).orElseThrow();
-        return new DadosCadastroAtendente(atendente.getId(), atendente.getNome(), atendente.getEmail(), atendente.getSenha(), atendente.getEnderecos(), atendente.getTelefones() );
+        return new DadosCadastroAtendenteDTO(atendente.getId(), atendente.getNome(), atendente.getEmail(), atendente.getSenha(), atendente.getEnderecos(), atendente.getTelefones() );
     }
 
     @Transactional
