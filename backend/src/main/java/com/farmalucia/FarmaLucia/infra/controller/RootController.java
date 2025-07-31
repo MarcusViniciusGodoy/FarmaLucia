@@ -4,10 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
-    @GetMapping("/login")
-    public String carregaPaginaListagem(){
+public class RootController {
 
-        return "redirect:http://localhost:5501/index.html";
+    @GetMapping("/")
+    public String redirectRoot() {
+        return "redirect:/login";
     }
 }
+
