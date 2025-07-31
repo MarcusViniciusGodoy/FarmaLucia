@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "medicos")
+@Table(name = "medico")
 public class Medico implements UserDetails {
 
     @Id
@@ -30,10 +30,10 @@ public class Medico implements UserDetails {
     @Column(name = "crm", length = 100)
     private String crm;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "medico_id", referencedColumnName = "id")
     private List<Endereco> enderecos;
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "medico_id", referencedColumnName = "id")
     private List<Telefone> telefones;
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
