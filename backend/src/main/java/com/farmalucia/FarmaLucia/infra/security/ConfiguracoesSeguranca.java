@@ -33,7 +33,8 @@ public class ConfiguracoesSeguranca {
                     req.requestMatchers("/css/**", "/js/**", "/assets/**").permitAll();
                     req.anyRequest().authenticated();
                 })
-                .formLogin(form -> form.loginPage("/login")
+                .formLogin(form -> form
+                        .loginPage("/login")
                         .defaultSuccessUrl("/")
                         .permitAll())
                 .logout(logout -> logout
