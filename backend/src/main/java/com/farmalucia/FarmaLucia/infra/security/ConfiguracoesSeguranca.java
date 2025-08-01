@@ -2,6 +2,7 @@ package com.farmalucia.FarmaLucia.infra.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -40,8 +41,7 @@ public class ConfiguracoesSeguranca {
     public SecurityFilterChain filtrosSeguranca(HttpSecurity http) throws Exception {
         return http
                 .cors().and()
-                .csrf().disable()
-                .headers(headers -> headers.cacheControl())  // já configura Cache-Control
+                .headers(headers -> headers.cacheControl())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/logout", "/css/**", "/js/**", "/assets/**", "/api/verifica-autenticacao")
                         .permitAll()
@@ -54,8 +54,10 @@ public class ConfiguracoesSeguranca {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
                         .permitAll())
-                .rememberMe(rememberMe -> rememberMe.key("lembarDeMim")
-                .alwaysRemember(true))
+                .rememberMe(rememberMe -> rememberMe.key("lembrarDeMim")
+                        .alwaysRemember(true)
+                )
+                .csrf(Customizer.withDefaults())
                 .build();
     }
 
