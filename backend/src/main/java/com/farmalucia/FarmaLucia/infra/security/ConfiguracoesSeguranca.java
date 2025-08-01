@@ -1,6 +1,5 @@
 package com.farmalucia.FarmaLucia.infra.security;
 
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -42,32 +41,19 @@ public class ConfiguracoesSeguranca {
         return http
                 .cors().and()
                 .csrf().disable()
+                .headers(headers -> headers.cacheControl())  // já configura Cache-Control
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/login", "/logout", "/css/**", "/js/**",
-                                "/assets/**", "/api/verifica-autenticacao"
-                        ).permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form -> form
-                        .successHandler((request, response, authentication) -> {
-                            response.setStatus(HttpServletResponse.SC_OK);
-                            response.setContentType("application/json");
-                            response.getWriter().write("{\"status\":\"success\"}");
-                            response.getWriter().flush();
-                        })
-                        .failureHandler((request, response, exception) -> {
-                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                            response.setContentType("application/json");
-                            response.getWriter().write("{\"status\":\"fail\"}");
-                            response.getWriter().flush();
-                        })
+                        .requestMatchers("/login", "/logout", "/css/**", "/js/**", "/assets/**", "/api/verifica-autenticacao")
                         .permitAll()
+                        .anyRequest()
+                        .authenticated()
                 )
+                .formLogin(form -> form.loginPage("/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                )
+                        .permitAll())
                 .build();
     }
 
@@ -84,3 +70,4 @@ public class ConfiguracoesSeguranca {
         return source;
     }
 }
+
