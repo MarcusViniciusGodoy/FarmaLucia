@@ -74,6 +74,13 @@ public class AuthorizationServerConfig {
                         .authenticationProvider(new CustomPasswordAuthenticationProvider(authorizationService(), tokenGenerator(), userDetailsService, passwordEncoder())));
 
         http.oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()));
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/h2-console/**").permitAll()
+                .anyRequest().authenticated()
+        );
+        http.csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**")
+        );
         // @formatter:on
 
         return http.build();

@@ -1,7 +1,7 @@
 package com.farmalucia.FarmaLucia.infra.controller;
 
-import com.farmalucia.FarmaLucia.infra.DTO.UsuarioDTO;
-import com.farmalucia.FarmaLucia.infra.service.UsuarioService;
+import com.farmalucia.FarmaLucia.infra.DTO.UserDTO;
+import com.farmalucia.FarmaLucia.infra.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UsuarioController {
+public class UserController {
 
     @Autowired
-    private UsuarioService service;
+    private UserService service;
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @GetMapping(value = "/me")
-    public ResponseEntity<UsuarioDTO> getMe(){
-        UsuarioDTO dto = service.getMe();
+    public ResponseEntity<UserDTO> getMe(){
+        UserDTO dto = service.getMe();
         return ResponseEntity.ok(dto);
     }
 }

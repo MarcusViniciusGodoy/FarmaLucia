@@ -1,6 +1,6 @@
 package com.farmalucia.FarmaLucia.infra.controller;
 
-import org.springframework.http.ResponseEntity;
+/*import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,4 +17,4 @@ public class SessaoController {
             return ResponseEntity.status(401).body("Não autenticado");
         }
     }
-}
+}*/

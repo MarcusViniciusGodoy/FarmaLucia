@@ -16,8 +16,8 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "usuario")
-public class Usuario implements UserDetails {
+@Table(name = "tb_user")
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,7 @@ public class Usuario implements UserDetails {
     private List<Telefone> telefones;
 
     @ManyToMany
-    @JoinTable(name = "user_role",
+    @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
@@ -50,10 +50,6 @@ public class Usuario implements UserDetails {
         return false;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
     public void addRole(Role role){
         roles.add(role);
     }
@@ -65,7 +61,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return senha;
     }
 
     @Override
