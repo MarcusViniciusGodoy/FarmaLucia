@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "medico")
+@Table(name = "tb_medico")
 public class Medico implements UserDetails {
 
     @Id

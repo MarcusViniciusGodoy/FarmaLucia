@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 @AllArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "role")
+@Table(name = "tb_role")
 public class Role implements GrantedAuthority {
 
     @Id

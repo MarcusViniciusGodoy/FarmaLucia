@@ -2,7 +2,7 @@ package com.farmalucia.FarmaLucia.infra.DTO;
 
 import com.farmalucia.FarmaLucia.infra.entity.Endereco;
 import com.farmalucia.FarmaLucia.infra.entity.Telefone;
-import com.farmalucia.FarmaLucia.infra.entity.Usuario;
+import com.farmalucia.FarmaLucia.infra.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class UsuarioDTO {
+public class UserDTO {
 
     private Long id;
     private String nome;
@@ -19,7 +19,7 @@ public class UsuarioDTO {
     private List<String> telefones = new ArrayList<>();
     private List<String> roles = new ArrayList<>();
 
-    public UsuarioDTO(Usuario entity){
+    public UserDTO(User entity){
         id = entity.getId();
         nome = entity.getNome();
         email = entity.getEmail();
