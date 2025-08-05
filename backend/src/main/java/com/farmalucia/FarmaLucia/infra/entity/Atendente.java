@@ -1,6 +1,5 @@
 package com.farmalucia.FarmaLucia.infra.entity;
 
-import com.farmalucia.FarmaLucia.infra.DTO.DadosCadastroAtendenteDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,7 +35,7 @@ public class Atendente implements UserDetails {
     @JoinColumn(name = "atendente_id", referencedColumnName = "id")
     private List<Telefone> telefones;
 
-    public Atendente(DadosCadastroAtendenteDTO dados){
+    /*public Atendente(DadosCadastroAtendenteDTO dados){
         atualizarDados(dados);
     }
 
@@ -46,7 +45,7 @@ public class Atendente implements UserDetails {
         this.senha = dados.senha();
         this.enderecos = dados.enderecos();
         this.telefones = dados.telefones();
-    }
+    }*/
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
