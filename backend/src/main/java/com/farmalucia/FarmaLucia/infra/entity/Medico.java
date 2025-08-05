@@ -1,6 +1,5 @@
 package com.farmalucia.FarmaLucia.infra.entity;
 
-import com.farmalucia.FarmaLucia.infra.DTO.DadosCadastroMedicoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +8,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,10 +36,14 @@ public class Medico implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "medico_id", referencedColumnName = "id")
     private List<Telefone> telefones;
-    @Enumerated(EnumType.STRING)
-    private Especialidade especialidade;
 
-    @Deprecated
+    @ManyToMany
+    @JoinTable(name = "tb_medico_especialidade",
+            joinColumns = @JoinColumn(name = "medico_id"),
+            inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
+    private Set<Especialidade> especialidade = new HashSet<>();
+
+    /*@Deprecated
     public Medico(){}
 
     public Medico(DadosCadastroMedicoDTO dados) {
@@ -52,8 +57,8 @@ public class Medico implements UserDetails {
         this.senha = dados.senha();
         this.enderecos = dados.enderecos();
         this.telefones = dados.telefones();
-        this.especialidade = dados.especialidade();
-    }
+        this.especialidades = (Set<Especialidade>) dados.especialidades();
+    }*/
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

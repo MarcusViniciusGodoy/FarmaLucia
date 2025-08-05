@@ -1,9 +1,22 @@
 package com.farmalucia.FarmaLucia.infra.entity;
 
-public enum Especialidade {
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    ORTOPEDIA,
-    CARDIOLOGIA,
-    GINECOLOGIA,
-    DERMATOLOGIA
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "tb_especialidade")
+public class Especialidade {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+
 }

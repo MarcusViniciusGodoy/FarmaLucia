@@ -1,16 +1,8 @@
 package com.farmalucia.FarmaLucia.infra.service;
 
-import com.farmalucia.FarmaLucia.infra.DTO.DadosCadastroAtendenteDTO;
-import com.farmalucia.FarmaLucia.infra.RegraDeNegocioException;
-import com.farmalucia.FarmaLucia.infra.entity.Atendente;
-import com.farmalucia.FarmaLucia.infra.repository.AtendenteRepository;
-import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Service;
-
-@Service
 public class AtendenteService {
 
-    private AtendenteRepository repository;
+   /* private AtendenteRepository repository;
 
     public AtendenteService(AtendenteRepository repository){
         this.repository = repository;
@@ -38,5 +30,5 @@ public class AtendenteService {
     @Transactional
     public void excluirAtendente(Long id){
         repository.deleteById(id);
-    }
+    }*/
 }
